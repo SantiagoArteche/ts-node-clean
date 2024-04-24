@@ -5,9 +5,14 @@ import { CronService } from "./cron/cron-service";
 import "dotenv/config";
 import { EmailService } from "./email/email.service";
 import { SendEmailLogs } from "../domain/use-cases/email/send-email-logs";
+import { MongoLogDatasource } from "../infrastructure/datasources/mongo-log.datasource";
 
 const fileSystemLogRepository = new LogRepositoryImplementation(
   new FileSystemDataSource()
+);
+
+const mongoLogRepository = new LogRepositoryImplementation(
+  new MongoLogDatasource()
 );
 
 const emailService = new EmailService();
@@ -15,9 +20,9 @@ export class Server {
   public static start() {
     console.log("Server started...");
 
-    CronService.createJob("12 * * * *04", function () {
+    CronService.createJob("30 12 * * *", function () {
       new SendEmailLogs(emailService, fileSystemLogRepository).execute(
-        "santeharteche@hotmail.com"
+        process.env.MAIL_TO as string
       );
     });
 
