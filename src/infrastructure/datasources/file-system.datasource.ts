@@ -32,10 +32,8 @@ export class FileSystemDataSource implements LogDataSource {
 
     if (newLog.level === LogSeverityLevel.medium) {
       fs.appendFileSync(this.mediumLogsPath, logJSON);
-    } else if (newLog.level === LogSeverityLevel.high) {
-      fs.appendFileSync(this.highLogsPath, logJSON);
     } else {
-      throw new Error("Method not implemented.");
+      fs.appendFileSync(this.highLogsPath, logJSON);
     }
   }
 
