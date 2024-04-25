@@ -9,7 +9,7 @@ export class MongoLogDatasource implements LogDataSource {
       await newLog.save();
       console.log("Mongo Log created", newLog.id);
     } catch (error) {
-      throw new Error(error as string);
+      console.log(error as string);
     }
   }
   async getLogs(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {

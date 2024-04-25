@@ -6,4 +6,7 @@ logs/
 
 .env
 
-/mongo/
+/mongo
+
+/postgres
+
