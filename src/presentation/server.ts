@@ -1,6 +1,6 @@
 import { CheckServices } from "../domain/use-cases/checks/check-service";
 import { FileSystemDataSource } from "../infrastructure/datasources/file-system.datasource";
-import { LogRepositoryImplementation } from "../infrastructure/repositories/log.repository";
+import { LogRepositoryImplementation } from "../infrastructure/repositories/log.repository.impl";
 import { CronService } from "./cron/cron-service";
 import "dotenv/config";
 import { EmailService } from "./email/email.service";

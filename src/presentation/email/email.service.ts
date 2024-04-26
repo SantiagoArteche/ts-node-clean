@@ -1,8 +1,7 @@
 import nodemailer from "nodemailer";
 import "dotenv/config";
-import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 
-interface SendMailOptions {
+export interface SendMailOptions {
   to: string | string[];
   subject: string;
   htmlBody: string;
@@ -24,7 +23,7 @@ export class EmailService {
     },
   });
 
-  private async sendEmail(options: SendMailOptions): Promise<boolean> {
+  public async sendEmail(options: SendMailOptions): Promise<boolean> {
     const { to, subject, htmlBody, attachments } = options;
 
     try {
